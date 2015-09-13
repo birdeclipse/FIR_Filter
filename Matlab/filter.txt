@@ -18,6 +18,9 @@ plot	(t,X,'Mixed Signal');
 Fs 	= 	2e6;
 N	=	512;
 n	=	0:N-1;
+f1	=	300000;
+f2	=	750000;
+
 x1	=	10*sin(2*pi*f1*n/Fs);
 x2	=	100*sin(2*pi*f2*n/Fs);
 Mixed_signal	=	x1+x2;
