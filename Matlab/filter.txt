@@ -15,6 +15,7 @@ plot	(t,X,'Mixed Signal');
 
 
 
+
 Fs 	= 	2e6;
 N	=	512;
 n	=	0:N-1;
@@ -25,9 +26,19 @@ x1	=	10*sin(2*pi*f1*n/Fs);
 x2	=	100*sin(2*pi*f2*n/Fs);
 Mixed_signal	=	x1+x2;
 Y				=	filter(Hd,Mixed_signal);
-subplot	(1,2,1);
+subplot	(2,2,1);
 plot	(n,Y);
 title	('filtered signal');
-subplot	(1,2,2);
+subplot	(2,2,2);
 plot	(n,Mixed_signal);
 title	('Mixed_signal');
+
+frq	=	fft(Y,N);    			%对信号进行快速Fourier变换
+mag	=	abs(frq);     			%求得Fourier变换后的振幅
+f	=	n*Fs/N;    				%频率序列
+subplot(2,2,3),plot(f,mag);   	%绘出随频率变化的振幅
+
+frq1=	fft(Mixed_signal,N);
+mag1=	abs(frq1);
+f	=	n*Fs/N;
+subplot(2,2,4),plot(f,mag1);
