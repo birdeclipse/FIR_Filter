@@ -1,0 +1,8 @@
+fs=2e6;
+t=0:1/fs:1;
+x1=sin(100000*2*pi.*t);x2=sin(700000*2*pi.*t);x=x1+x2;
+y=filter(Hd,x);%滤波
+subplot(1,2,1);
+plot(t,y);title('Filter output');
+subplot(1,2,2);
+plot(t,x);title('mixed signal');
