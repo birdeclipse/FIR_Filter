@@ -1,0 +1,30 @@
+FS	= 	2e6;
+t	=	0:1/FS:0.0001;
+f1	=	300000;
+f2	=	750000;
+x1	=	10*sin(2*pi*f1*t);
+x2	=	100*sin(2*pi*f2*t);
+X	=	x1+x2;
+Y	=	filter(Hd,X);
+subplot	(1,2,1);
+plot	(t,Y,'filtered signal');
+subplot	(1,2,2);
+plot	(t,X,'Mixed Signal');
+
+
+
+
+
+Fs 	= 	2e6;
+N	=	512;
+n	=	0:N-1;
+x1	=	10*sin(2*pi*f1*n/Fs);
+x2	=	100*sin(2*pi*f2*n/Fs);
+Mixed_signal	=	x1+x2;
+Y				=	filter(Hd,Mixed_signal);
+subplot	(1,2,1);
+plot	(n,Y);
+title	('filtered signal');
+subplot	(1,2,2);
+plot	(n,Mixed_signal);
+title	('Mixed_signal');
